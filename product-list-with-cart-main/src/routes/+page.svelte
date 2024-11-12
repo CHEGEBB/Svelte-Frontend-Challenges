@@ -1,93 +1,100 @@
 <script>
-
 </script>
 
 <div class="container">
     <div class="cards-container">
-       <h1>Desserts</h1>
-       <div class="cards-row-1">
-        <div class="card-1">
-            <div class="card-content">
-                <h2>Waffle</h2>
-            <p>Waffle with Berries</p>
-            <p>6.50</p>
+        <h1>Desserts</h1>
+        <div class="cards-row-1">
+            <div class="card-1">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Waffle</h2>
+                    <p>Waffle with Berries</p>
+                    <p>6.50</p>
+                </div>
             </div>
-            <button>Add to Cart</button>
+            <div class="card-2">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Crème Brûlée</h2>
+                    <p>Vanilla Bean Crème Brûlée</p>
+                    <p>7.00</p>
+                </div>
             </div>
-        <div class="card-2">
-            <div class="card-content">
-                <h2>Crème Brûlée</h2>
-            <p>Vanilla Bean Crème Brûlée</p>
-            <p>7.00</p>
+            <div class="card-3">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Macaron</h2>
+                    <p>Macaron Mix of Five</p>
+                    <p>8.00</p>
+                </div>
             </div>
-            <button>Add to Cart</button>
+        </div>
+        <div class="cards-row-2">
+            <div class="card-4">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Tiramisu</h2>
+                    <p>Classic Tiramisu</p>
+                    <p>5.50</p>
+                </div>
             </div>
-        <div class="card-3">
-            <div class="card-content">
-                <h2>Macaron</h2>
-            <p>Macaron Mix of Five</p>
-            <p>8.00</p>
+            <div class="card-5">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Baklava</h2>
+                    <p>Pistachio Baklava</p>
+                    <p>4.00</p>
+                </div>
             </div>
-            <button>Add to Cart</button>
-            </div>
-            </div>
-            <div class="cards-row-2">
-        <div class="card-4">
-            <div class="card-content">
-                <h2>Tiramisu</h2>
-            <p>Classic Tiramisu</p>
-            <p>5.50</p>
-            </div>
-            <button>Add to Cart</button>
-            </div>
-        <div class="card-5">
-            <div class="card-content">
-                <h2>Baklava</h2>
-            <p>Pistachio Baklava</p>
-            <p>4.00</p>
-            </div>
-            <button>Add to Cart</button>
-            </div>
-        <div class="card-6">
-            <div class="card-content">
-                <h2>Pie</h2>
-            <p>Lemon Meringue Pie</p>
-            <p>5.00</p>
-            </div>
-            <button>Add to Cart</button>
+            <div class="card-6">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Pie</h2>
+                    <p>Lemon Meringue Pie</p>
+                    <p>5.00</p>
+                </div>
             </div>
         </div>
         <div class="cards-row-3">
-        <div class="card-7">
-            <div class="card-content">
-                <h2>Red Velvet Cake</h2>
-            <p>Cake</p>
-            <p>4.50</p>
+            <div class="card-image"></div>
+            <div class="card-7">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Red Velvet Cake</h2>
+                    <p>Cake</p>
+                    <p>4.50</p>
+                </div>
             </div>
-            <button>Add to Cart</button>
+            <div class="card-8">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Brownie</h2>
+                    <p>Salted Caramel Brownie</p>
+                    <p>4.50</p>
+                </div>
             </div>
-        <div class="card-8">
-            <div class="card-content">
-                <h2>Brownie</h2>
-            <p>Salted Caramel Brownie</p>
-            <p>4.50</p>
-            </div>
-            <button>Add to Cart</button>
-            </div>
-        <div class="card-9">
-            <div class="card-content">
-                <h2>Panna Cotta</h2>
-            <p>Vanilla Panna Cotta</p>
-            <p>6.50</p>
-            </div>
-            <button>Add to Cart</button>
+            <div class="card-9">
+                <div class="card-image"></div>
+                <button>Add to Cart</button>
+                <div class="card-content">
+                    <h2>Panna Cotta</h2>
+                    <p>Vanilla Panna Cotta</p>
+                    <p>6.50</p>
+                </div>
             </div>
         </div>
 
- Your Cart
-          (<!-- Quantity -->) Your added items will appear here    
+        Your Cart (<!-- Quantity -->) Your added items will appear here
     </div>
-
 </div>
 
 <style lang="scss">
@@ -102,7 +109,6 @@
     $Rose500: hsl(12, 20%, 44%);
     $Rose900: hsl(14, 65%, 9%);
 
-
     @mixin card-styles {
         border-radius: 0.5rem;
         box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.1);
@@ -112,25 +118,33 @@
         max-width: 30rem;
         text-align: center;
     }
-    @mixin cards-row{
+    @mixin cards-row {
         display: flex;
-            flex-direction: row;
-            width: 80%;
+        flex-direction: row;
+        width: 80%;
     }
     @mixin respond-to($breakpoint) {
-  @if $breakpoint == "desktop" {
-    @media (min-width: 1280px) and (max-width: 1399px) { @content; }
-  }
-  @if $breakpoint == "tablet" {
-    @media (min-width: 768px) and (max-width: 1279px) { @content; }
-  }
-  @if $breakpoint == "mobile" {
-    @media (max-width: 767px) { @content; }
-  }
-  @if $breakpoint == "large-desktop" {
-    @media (min-width: 1400px) and (max-width: 1920px) { @content; }
-  }
-}
+        @if $breakpoint == "desktop" {
+            @media (min-width: 1280px) and (max-width: 1399px) {
+                @content;
+            }
+        }
+        @if $breakpoint == "tablet" {
+            @media (min-width: 768px) and (max-width: 1279px) {
+                @content;
+            }
+        }
+        @if $breakpoint == "mobile" {
+            @media (max-width: 767px) {
+                @content;
+            }
+        }
+        @if $breakpoint == "large-desktop" {
+            @media (min-width: 1400px) and (max-width: 1920px) {
+                @content;
+            }
+        }
+    }
 
     * {
         margin: 0;
@@ -139,12 +153,12 @@
     }
     .container {
         display: flex;
-    min-height: 100vh;
-    max-width: 100vw;
-    font-family: $font-Red-Hat;
-    background: linear-gradient(90deg, $Rose300, $Rose50);
-    overflow-x: hidden;
-        .cards-container{
+        min-height: 100vh;
+        max-width: 100vw;
+        font-family: $font-Red-Hat;
+        background: linear-gradient(90deg, $Rose300, $Rose50);
+        overflow-x: hidden;
+        .cards-container {
             padding: 20px;
             width: 100%;
             height: 100%;
@@ -153,84 +167,154 @@
             gap: 4rem;
             margin-left: 100px;
 
-        .cards-row-1{
-            @include cards-row;
-        .card-1 {
-            @include card-styles;
-            margin: 1rem;
-            @include respond-to("tablet") {
-                width: 200px;
-                height: 200px;
-                background: url("../images/image-waffle-tablet.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
+            .cards-row-1 {
+                @include cards-row;
+                .card-1 {
+                    margin: 1rem;
+                    .card-image {
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-waffle-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-waffle-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-waffle-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-waffle-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
+                }
+                .card-2 {
+                    .card-image {
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-creme-brulee-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-creme-brulee-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-creme-brulee-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-creme-brulee-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
+                    margin: 1rem;
+                }
+                .card-3 {
+                    .card-image {
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-macaron-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-macaron-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-macaron-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-macaron-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
+                    margin: 1rem;
+                }
             }
-            @include respond-to("desktop") {
-                width: 250px;
-                height: 250px;
-                background: url("../images/image-waffle-desktop.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
+            .cards-row-2 {
+                @include cards-row;
+                .card-4 {
+                    @include card-styles;
+                    margin: 1rem;
+                }
+                .card-5 {
+                    @include card-styles;
+                    margin: 1rem;
+                }
+                .card-6 {
+                    @include card-styles;
+                    margin: 1rem;
+                }
             }
-            @include respond-to("large-desktop") {
-                width: 300px;
-                height: 300px;
-                background: url("../images/image-waffle-desktop.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-            @include respond-to("mobile") {
-                width: 150px;
-                height: 150px;
-                background: url("../images/image-waffle-mobile.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-        }
-        .card-2 {
-            @include card-styles;
-            margin: 1rem;
-        }
-        .card-3 {
-            @include card-styles;
-            margin: 1rem;
-        }
-    }
-    .cards-row-2{
-        @include cards-row;
-        .card-4 {
-            @include card-styles;
-            margin: 1rem;
-        }
-        .card-5 {
-            @include card-styles;
-            margin: 1rem;
-        }
-        .card-6 {
-            @include card-styles;
-            margin: 1rem;
-        }
-    }
-    .cards-row-3{
-        @include cards-row;
+            .cards-row-3 {
+                @include cards-row;
 
-        .card-7 {
-            @include card-styles;
-            margin: 1rem;
+                .card-7 {
+                    @include card-styles;
+                    margin: 1rem;
+                }
+                .card-8 {
+                    @include card-styles;
+                    margin: 1rem;
+                }
+                .card-9 {
+                    @include card-styles;
+                    margin: 1rem;
+                }
+            }
         }
-        .card-8 {
-            @include card-styles;
-            margin: 1rem;
-        }
-        .card-9 {
-            @include card-styles;
-            margin: 1rem;
-        }
-    }
-}
     }
 </style>
