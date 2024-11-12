@@ -1,7 +1,7 @@
 <div class="container">
     <div class="cards-container">
        <h1>Desserts</h1>
-       <div class="cards">
+       <div class="cards-row-1">
         <div class="card-1">
             <div class="card-content">
                 <h2>Waffle</h2>
@@ -9,7 +9,7 @@
             <p>6.50</p>
             </div>
             <button>Add to Cart</button>
-        </div>
+            </div>
         <div class="card-2">
             <div class="card-content">
                 <h2>Crème Brûlée</h2>
@@ -26,6 +26,8 @@
             </div>
             <button>Add to Cart</button>
             </div>
+            </div>
+            <div class="cards-row-2">
         <div class="card-4">
             <div class="card-content">
                 <h2>Tiramisu</h2>
@@ -50,6 +52,8 @@
             </div>
             <button>Add to Cart</button>
             </div>
+        </div>
+        <div class="cards-row-3">
         <div class="card-7">
             <div class="card-content">
                 <h2>Red Velvet Cake</h2>
@@ -74,7 +78,7 @@
             </div>
             <button>Add to Cart</button>
             </div>
-       </div>
+        </div>
 
  Your Cart
           (<!-- Quantity -->) Your added items will appear here    
@@ -104,6 +108,11 @@
         max-width: 30rem;
         text-align: center;
     }
+    @mixin cards-row{
+        display: flex;
+            flex-direction: row;
+            width: 80%;
+    }
 
     * {
         margin: 0;
@@ -115,20 +124,22 @@
         min-height: 100vh;
         min-width: 100vw;
         font-family: $font-Red-Hat;
-        background:linear-gradient(90deg, $Rose100, $Rose50);
-        overflow-x: hidden ;
+        background:linear-gradient(90deg, $Rose300, $Rose50);
+        overflow-x: hidden !important;
         .cards-container{
             padding: 20px;
-            background-color: red;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-left: 100px;
 
-        .cards{
-            display: grid;
-            grid-template-columns: repeat(3, 0.5fr);
-           
-
+        .cards-row-1{
+            @include cards-row;
         .card-1 {
             @include card-styles;
-            margin-top: 1rem;
+            margin: 1rem;
         }
         .card-2 {
             @include card-styles;
@@ -138,6 +149,9 @@
             @include card-styles;
             margin: 1rem;
         }
+    }
+    .cards-row-2{
+        @include cards-row;
         .card-4 {
             @include card-styles;
             margin: 1rem;
@@ -150,6 +164,10 @@
             @include card-styles;
             margin: 1rem;
         }
+    }
+    .cards-row-3{
+        @include cards-row;
+
         .card-7 {
             @include card-styles;
             margin: 1rem;
