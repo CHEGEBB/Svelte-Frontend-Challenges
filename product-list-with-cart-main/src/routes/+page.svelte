@@ -1,5 +1,26 @@
 <div class="container">
     <div class="card-container bg-blue-600">
+        <div class="cards">
+        <div class="card1">
+            card
+        </div>
+        <div class="card2">
+            card
+        </div>
+        <div class="card3">
+            card
+        </div>
+        <div class="card4">
+            card
+        </div>
+        <div class="card5">
+            card
+        </div>
+    </div>
+
+
+
+
         Desserts 
         Waffle with Berries Waffle 6.50 Add to Cart Vanilla Bean Crème Brûlée
         Crème Brûlée 7.00 Add to Cart Macaron Mix of Five Macaron 8.00 Add to Cart Classic
@@ -24,6 +45,17 @@
     $Rose500: hsl(12, 20%, 44%);
     $Rose900: hsl(14, 65%, 9%);
 
+    @mixin card-styles {
+        background: $Rose50;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        width: 300px;
+        height: 300px;
+        max-width: 30rem;
+        text-align: center;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -37,5 +69,13 @@
         min-width: 100vw;
         font-family: $font-Red-Hat;
         background:linear-gradient(90deg, $Rose100, $Rose50);
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(3, 0.5fr);
+        .card1, .card2, .card3, .card4, .card5 {
+            @include card-styles;
+            margin: 1rem;
+        }
+    }
     }
 </style>
