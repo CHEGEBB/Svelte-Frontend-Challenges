@@ -208,11 +208,14 @@
                         align-items: center;
                         background-color: $Rose50;
                         color: $Rose900;
-                        border: 1px solid $Rose900;
+                        border: 1.5px solid $Rose900;
                         padding: 0.5rem 1rem;
-                        border-radius: 1rem;
-                        margin-top: -20px;
+                        border-radius: 2rem;
                         justify-content: center;
+                        position: relative;
+                        width: 160px;
+                        top: -7%;
+                        left: 20%;
 
                         .icon {
                             width: 20px;
