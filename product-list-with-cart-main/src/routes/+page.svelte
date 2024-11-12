@@ -287,15 +287,117 @@
             .cards-row-2 {
                 @include cards-row;
                 .card-4 {
-                    @include card-styles;
                     margin: 1rem;
+                    .card-image{
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-tiramisu-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-tiramisu-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-tiramisu-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-tiramisu-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
                 }
                 .card-5 {
-                    @include card-styles;
+                    .card-image{
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-baklava-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-baklava-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-baklava-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-baklava-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
                     margin: 1rem;
                 }
                 .card-6 {
-                    @include card-styles;
+                    .card-image{
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-meringue-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-meringue-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-meringue-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-meringue-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
                     margin: 1rem;
                 }
             }
@@ -303,15 +405,117 @@
                 @include cards-row;
 
                 .card-7 {
-                    @include card-styles;
+                    .card-image{
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-cake-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-cake-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-cake-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-cake-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
                     margin: 1rem;
                 }
                 .card-8 {
-                    @include card-styles;
+                    .card-image{
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-brownie-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-brownie-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-brownie-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-brownie-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
                     margin: 1rem;
                 }
                 .card-9 {
-                    @include card-styles;
+                    .card-image{
+                        @include card-styles;
+                        @include respond-to("tablet") {
+                            width: 200px;
+                            height: 200px;
+                            background: url("../images/image-panna-cotta-tablet.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("desktop") {
+                            width: 250px;
+                            height: 250px;
+                            background: url("../images/image-panna-cotta-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("large-desktop") {
+                            width: 300px;
+                            height: 300px;
+                            background: url("../images/image-panna-cotta-desktop.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                        @include respond-to("mobile") {
+                            width: 150px;
+                            height: 150px;
+                            background: url("../images/image-panna-cotta-mobile.jpg");
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
+                    }
                     margin: 1rem;
                 }
             }
