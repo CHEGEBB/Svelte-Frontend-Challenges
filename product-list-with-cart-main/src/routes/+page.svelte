@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card-container">
+    <div class="cards-container">
        <h1>Desserts</h1>
        <div class="cards">
         <div class="card-1">
@@ -117,12 +117,14 @@
         font-family: $font-Red-Hat;
         background:linear-gradient(90deg, $Rose100, $Rose50);
         overflow-x: hidden ;
+        .cards-container{
+            padding: 20px;
+            background-color: red;
+
         .cards{
             display: grid;
             grid-template-columns: repeat(3, 0.5fr);
-            gap: 1rem;
-            width: 100%;
-            height: 100%;
+           
 
         .card-1 {
             @include card-styles;
@@ -161,5 +163,6 @@
             margin: 1rem;
         }
     }
+}
     }
 </style>
