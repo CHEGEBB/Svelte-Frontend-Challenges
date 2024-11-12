@@ -1,20 +1,82 @@
 <div class="container">
     <div class="card-container">
        <h1>Desserts</h1>
+       <div class="cards">
+        <div class="card-1">
+            <div class="card-content">
+                <h2>Waffle</h2>
+            <p>Waffle with Berries</p>
+            <p>6.50</p>
+            </div>
+            <button>Add to Cart</button>
+        </div>
+        <div class="card-2">
+            <div class="card-content">
+                <h2>Crème Brûlée</h2>
+            <p>Vanilla Bean Crème Brûlée</p>
+            <p>7.00</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+        <div class="card-3">
+            <div class="card-content">
+                <h2>Macaron</h2>
+            <p>Macaron Mix of Five</p>
+            <p>8.00</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+        <div class="card-4">
+            <div class="card-content">
+                <h2>Tiramisu</h2>
+            <p>Classic Tiramisu</p>
+            <p>5.50</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+        <div class="card-5">
+            <div class="card-content">
+                <h2>Baklava</h2>
+            <p>Pistachio Baklava</p>
+            <p>4.00</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+        <div class="card-6">
+            <div class="card-content">
+                <h2>Pie</h2>
+            <p>Lemon Meringue Pie</p>
+            <p>5.00</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+        <div class="card-7">
+            <div class="card-content">
+                <h2>Red Velvet Cake</h2>
+            <p>Cake</p>
+            <p>4.50</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+        <div class="card-8">
+            <div class="card-content">
+                <h2>Brownie</h2>
+            <p>Salted Caramel Brownie</p>
+            <p>4.50</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+        <div class="card-9">
+            <div class="card-content">
+                <h2>Panna Cotta</h2>
+            <p>Vanilla Panna Cotta</p>
+            <p>6.50</p>
+            </div>
+            <button>Add to Cart</button>
+            </div>
+       </div>
 
-
-
-
-        
-        Waffle Waffle with Berries  6.50 Add to Cart
-        Crème Brûlée Vanilla Bean Crème Brûlée  7.00 Add to Cart
-        Macaron Macaron Mix of Five  8.00 Add to Cart
-        Tiramisu  Classic Tiramisu 5.50 Add to Cart
-        Baklava Pistachio  Baklava 4.00 Add to Cart
-        Pie Lemon Meringue Pie 5.00 Add to Cart
-         Red Velvet Cake Cake 4.50 Add to Cart
-         Brownie Salted Caramel Brownie  4.50 Add to Cart
-         Panna Cotta Vanilla Panna Cotta 6.50 Add to Cart Your Cart
+ Your Cart
           (<!-- Quantity -->) Your added items will appear here    
     </div>
 
@@ -37,8 +99,8 @@
         border-radius: 0.5rem;
         box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.1);
         padding: 1rem;
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
         max-width: 30rem;
         text-align: center;
     }
@@ -50,16 +112,51 @@
     }
     .container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+        min-height: 100vh;
         min-width: 100vw;
         font-family: $font-Red-Hat;
         background:linear-gradient(90deg, $Rose100, $Rose50);
+        overflow-x: hidden ;
         .cards{
             display: grid;
             grid-template-columns: repeat(3, 0.5fr);
-        .card1, .card2, .card3, .card4, .card5 {
+            gap: 1rem;
+            width: 100%;
+            height: 100%;
+
+        .card-1 {
+            @include card-styles;
+            margin-top: 1rem;
+        }
+        .card-2 {
+            @include card-styles;
+            margin: 1rem;
+        }
+        .card-3 {
+            @include card-styles;
+            margin: 1rem;
+        }
+        .card-4 {
+            @include card-styles;
+            margin: 1rem;
+        }
+        .card-5 {
+            @include card-styles;
+            margin: 1rem;
+        }
+        .card-6 {
+            @include card-styles;
+            margin: 1rem;
+        }
+        .card-7 {
+            @include card-styles;
+            margin: 1rem;
+        }
+        .card-8 {
+            @include card-styles;
+            margin: 1rem;
+        }
+        .card-9 {
             @include card-styles;
             margin: 1rem;
         }
