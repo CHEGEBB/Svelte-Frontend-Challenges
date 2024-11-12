@@ -32,7 +32,10 @@
             </div>
             <div class="card-3">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Macaron</h2>
                     <p>Macaron Mix of Five</p>
@@ -43,7 +46,10 @@
         <div class="cards-row-2">
             <div class="card-4">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Tiramisu</h2>
                     <p>Classic Tiramisu</p>
@@ -52,7 +58,10 @@
             </div>
             <div class="card-5">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Baklava</h2>
                     <p>Pistachio Baklava</p>
@@ -61,7 +70,10 @@
             </div>
             <div class="card-6">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Pie</h2>
                     <p>Lemon Meringue Pie</p>
@@ -73,7 +85,10 @@
             <div class="card-image"></div>
             <div class="card-7">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Red Velvet Cake</h2>
                     <p>Cake</p>
@@ -82,7 +97,10 @@
             </div>
             <div class="card-8">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Brownie</h2>
                     <p>Salted Caramel Brownie</p>
@@ -91,7 +109,10 @@
             </div>
             <div class="card-9">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Panna Cotta</h2>
                     <p>Vanilla Panna Cotta</p>
