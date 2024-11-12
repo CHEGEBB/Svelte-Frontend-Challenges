@@ -1,3 +1,7 @@
+<script>
+
+</script>
+
 <div class="container">
     <div class="cards-container">
        <h1>Desserts</h1>
@@ -98,8 +102,8 @@
     $Rose500: hsl(12, 20%, 44%);
     $Rose900: hsl(14, 65%, 9%);
 
+
     @mixin card-styles {
-        background: $Rose50;
         border-radius: 0.5rem;
         box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.1);
         padding: 1rem;
@@ -113,6 +117,20 @@
             flex-direction: row;
             width: 80%;
     }
+    @mixin respond-to($breakpoint) {
+  @if $breakpoint == "desktop" {
+    @media (min-width: 1280px) and (max-width: 1399px) { @content; }
+  }
+  @if $breakpoint == "tablet" {
+    @media (min-width: 768px) and (max-width: 1279px) { @content; }
+  }
+  @if $breakpoint == "mobile" {
+    @media (max-width: 767px) { @content; }
+  }
+  @if $breakpoint == "large-desktop" {
+    @media (min-width: 1400px) and (max-width: 1920px) { @content; }
+  }
+}
 
     * {
         margin: 0;
@@ -121,11 +139,11 @@
     }
     .container {
         display: flex;
-        min-height: 100vh;
-        min-width: 100vw;
-        font-family: $font-Red-Hat;
-        background:linear-gradient(90deg, $Rose300, $Rose50);
-        overflow-x: hidden !important;
+    min-height: 100vh;
+    max-width: 100vw;
+    font-family: $font-Red-Hat;
+    background: linear-gradient(90deg, $Rose300, $Rose50);
+    overflow-x: hidden;
         .cards-container{
             padding: 20px;
             width: 100%;
@@ -140,6 +158,38 @@
         .card-1 {
             @include card-styles;
             margin: 1rem;
+            @include respond-to("tablet") {
+                width: 200px;
+                height: 200px;
+                background: url("../images/image-waffle-tablet.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            @include respond-to("desktop") {
+                width: 250px;
+                height: 250px;
+                background: url("../images/image-waffle-desktop.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            @include respond-to("large-desktop") {
+                width: 300px;
+                height: 300px;
+                background: url("../images/image-waffle-desktop.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            @include respond-to("mobile") {
+                width: 150px;
+                height: 150px;
+                background: url("../images/image-waffle-mobile.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
         }
         .card-2 {
             @include card-styles;
