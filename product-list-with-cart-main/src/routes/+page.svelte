@@ -1,13 +1,17 @@
 <script>
+    import Cartcon from "../images/icon-add-to-cart.svg";
 </script>
 
 <div class="container">
+    <h1>Desserts</h1>
     <div class="cards-container">
-        <h1>Desserts</h1>
         <div class="cards-row-1">
             <div class="card-1">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Waffle</h2>
                     <p>Waffle with Berries</p>
@@ -16,7 +20,10 @@
             </div>
             <div class="card-2">
                 <div class="card-image"></div>
-                <button>Add to Cart</button>
+                <button>
+                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                    Add to Cart
+                </button>
                 <div class="card-content">
                     <h2>Crème Brûlée</h2>
                     <p>Vanilla Bean Crème Brûlée</p>
@@ -153,19 +160,45 @@
     }
     .container {
         display: flex;
+        flex-direction: column;
         min-height: 100vh;
         max-width: 100vw;
         font-family: $font-Red-Hat;
         background: linear-gradient(90deg, $Rose300, $Rose50);
         overflow-x: hidden;
+        h1 {
+            font-size: 2rem;
+            color: $Rose900;
+            font-weight: 700;
+            text-align: left;
+            margin-left: 130px;
+            margin-top: 60px;
+        }
         .cards-container {
             padding: 20px;
             width: 100%;
             height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 4rem;
+            gap: 2rem;
             margin-left: 100px;
+            button {
+                        display: flex;
+                        align-items: center;
+                        background-color: $Rose50;
+                        color: $Rose900;
+                        border: 1px solid $Rose900;
+                        padding: 0.5rem 1rem;
+                        border-radius: 1rem;
+                        margin-top: -20px;
+                        justify-content: center;
+
+                        .icon {
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 0.5rem;
+                        }
+                    }
 
             .cards-row-1 {
                 @include cards-row;
@@ -206,6 +239,7 @@
                             background-repeat: no-repeat;
                         }
                     }
+                   
                 }
                 .card-2 {
                     .card-image {
@@ -288,7 +322,7 @@
                 @include cards-row;
                 .card-4 {
                     margin: 1rem;
-                    .card-image{
+                    .card-image {
                         @include card-styles;
                         @include respond-to("tablet") {
                             width: 200px;
@@ -325,7 +359,7 @@
                     }
                 }
                 .card-5 {
-                    .card-image{
+                    .card-image {
                         @include card-styles;
                         @include respond-to("tablet") {
                             width: 200px;
@@ -363,7 +397,7 @@
                     margin: 1rem;
                 }
                 .card-6 {
-                    .card-image{
+                    .card-image {
                         @include card-styles;
                         @include respond-to("tablet") {
                             width: 200px;
@@ -405,7 +439,7 @@
                 @include cards-row;
 
                 .card-7 {
-                    .card-image{
+                    .card-image {
                         @include card-styles;
                         @include respond-to("tablet") {
                             width: 200px;
@@ -443,7 +477,7 @@
                     margin: 1rem;
                 }
                 .card-8 {
-                    .card-image{
+                    .card-image {
                         @include card-styles;
                         @include respond-to("tablet") {
                             width: 200px;
@@ -481,7 +515,7 @@
                     margin: 1rem;
                 }
                 .card-9 {
-                    .card-image{
+                    .card-image {
                         @include card-styles;
                         @include respond-to("tablet") {
                             width: 200px;
