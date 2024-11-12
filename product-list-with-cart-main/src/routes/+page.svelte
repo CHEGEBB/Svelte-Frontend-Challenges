@@ -1,34 +1,21 @@
 <div class="container">
-    <div class="card-container bg-blue-600">
-        <div class="cards">
-        <div class="card1">
-            card
-        </div>
-        <div class="card2">
-            card
-        </div>
-        <div class="card3">
-            card
-        </div>
-        <div class="card4">
-            card
-        </div>
-        <div class="card5">
-            card
-        </div>
-    </div>
+    <div class="card-container">
+       <h1>Desserts</h1>
 
 
 
 
-        Desserts 
-        Waffle with Berries Waffle 6.50 Add to Cart Vanilla Bean Crème Brûlée
-        Crème Brûlée 7.00 Add to Cart Macaron Mix of Five Macaron 8.00 Add to Cart Classic
-        Tiramisu Tiramisu 5.50 Add to Cart Pistachio Baklava Baklava 4.00 Add to Cart
-        Lemon Meringue Pie Pie 5.00 Add to Cart Red Velvet Cake Cake 4.50 Add to Cart
-        Salted Caramel Brownie Brownie 4.50 Add to Cart Vanilla Panna Cotta Panna Cotta
-        6.50 Add to Cart Your Cart (<!-- Quantity -->) Your added items will appear
-        here    
+        
+        Waffle Waffle with Berries  6.50 Add to Cart
+        Crème Brûlée Vanilla Bean Crème Brûlée  7.00 Add to Cart
+        Macaron Macaron Mix of Five  8.00 Add to Cart
+        Tiramisu  Classic Tiramisu 5.50 Add to Cart
+        Baklava Pistachio  Baklava 4.00 Add to Cart
+        Pie Lemon Meringue Pie 5.00 Add to Cart
+         Red Velvet Cake Cake 4.50 Add to Cart
+         Brownie Salted Caramel Brownie  4.50 Add to Cart
+         Panna Cotta Vanilla Panna Cotta 6.50 Add to Cart Your Cart
+          (<!-- Quantity -->) Your added items will appear here    
     </div>
 
 </div>
