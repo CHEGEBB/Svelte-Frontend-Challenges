@@ -4,6 +4,7 @@
 
 <div class="container">
     <h1>Desserts</h1>
+    <div class="main-content">
     <div class="cards-container">
         <div class="cards-row-1">
             <div class="card-1">
@@ -120,9 +121,12 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="cart-container">
+        
         Your Cart (<!-- Quantity -->) Your added items will appear here
     </div>
+</div>
 </div>
 
 <style lang="scss">
@@ -139,7 +143,6 @@
 
     @mixin card-styles {
         border-radius: 0.5rem;
-        box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.1);
         padding: 1rem;
         width: 250px;
         height: 250px;
@@ -150,6 +153,7 @@
         display: flex;
         flex-direction: row;
         width: 80%;
+        padding-left: 60px;
     }
     @mixin respond-to($breakpoint) {
         @if $breakpoint == "desktop" {
@@ -185,24 +189,50 @@
         min-height: 100vh;
         max-width: 100vw;
         font-family: $font-Red-Hat;
-        background: linear-gradient(90deg, $Rose300, $Rose50);
+        background: linear-gradient(90deg, $Rose100, $Rose50);
         overflow-x: hidden;
         h1 {
             font-size: 2rem;
             color: $Rose900;
             font-weight: 700;
             text-align: left;
-            margin-left: 130px;
+            margin-left: 90px;
             margin-top: 60px;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            .cart-container{
+                width: 27%;
+                height: 300px;
+                background-color: $Rose50;
+                padding: 20px;
+                border-radius: 1rem;
+                margin-right: 20px;
+                text-align: center;
+                font-size: 1.5rem;
+                color: $Rose900;
+                font-weight: 700;
+                background-color: aqua;
+                position: absolute;
+                top:13%;
+                left: 70%;
+            }
         }
         .cards-container {
             padding: 20px;
-            width: 100%;
+            width: 70%;
             height: 100%;
             display: flex;
             flex-direction: column;
+            position: absolute;
+                top:20%;
+                right: 30%;
             gap: 2rem;
-            margin-left: 100px;
             button {
                         display: flex;
                         align-items: center;
