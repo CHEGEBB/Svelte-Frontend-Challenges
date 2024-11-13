@@ -1,162 +1,178 @@
 <script lang="javascript">
     import Cartcon from "../images/icon-add-to-cart.svg";
+    import Minuscon from "../images/icon-decrement-quantity.svg";
+    import Pluscon from "../images/icon-increment-quantity.svg";
 
     let count = 0;
     const buttonColor = "red";
 
-    const handleClick = ()=>{
+    const handleClick = () => {
         const buttonColor = "green";
-        count = count === 0 ? 1 : count; 
-    }
+        count = 1;
+    };
 
-    const increment =()=>{
+    const increment = () => {
         count++;
-
-    }
-    const decrement =()=>{
-        count--;
-
-    }
-
-
+    };
+    const decrement = () => {
+        if (count > 1) {
+            count--;
+        } else {
+            count = 0;
+        }
+    };
 </script>
 
 <div class="container">
     <h1>Desserts</h1>
     <div class="main-content">
-    <div class="cards-container">
-        <div class="cards-row-1">
-            <div class="card-1">
-                <div class="card-image"></div>
-                    
-                    <!-- Button for adding to cart -->
-                    <button on:click={handleClick} style="background-color: {buttonColor}">
+        <div class="cards-container">
+            <div class="cards-row-1">
+                <div class="card-1">
+                    <div class="card-image"></div>
+
+                    {#if count === 0}
+                        <!-- Initial Add to Cart Button -->
+                        <button
+                            class="add-to-cart-button"
+                            on:click={handleClick}
+                        >
+                            <img class="icon" src={Cartcon} alt="Cart Icon" />
+                            Add to Cart
+                        </button>
+                    {:else}
+                        <!-- Interactive Button with Increment and Decrement -->
+                        <button class="interactive-button">
+                            <span class="decrement" on:click={decrement}>
+                                <img
+                                    class="icon"
+                                    src={Minuscon}
+                                    alt="Minus Icon"
+                                />
+                            </span>
+                            <span class="count">{count}</span>
+                            <span class="increment" on:click={increment}>
+                                <img
+                                    class="icon"
+                                    src={Pluscon}
+                                    alt="Plus Icon"
+                                />
+                            </span>
+                        </button>
+                    {/if}
+                    <div class="card-content">
+                        <h2>Waffle</h2>
+                        <p>Waffle with Berries</p>
+                        <p>6.50</p>
+                    </div>
+                </div>
+                <div class="card-2">
+                    <div class="card-image"></div>
+                    <button>
                         <img class="icon" src={Cartcon} alt="Cart Icon" />
                         Add to Cart
                     </button>
-                    
-                    <!-- Increment and Decrement buttons with centered count -->
-                    {#if count > 0}
-                        <div class="counter">
-                            <button class="decrement" on:click={decrement}>-</button>
-                            <span class="count">{count}</span>
-                            <button class="increment" on:click={increment}>+</button>
-                        </div>
-                    {/if}
-                <div class="card-content">
-                    <h2>Waffle</h2>
-                    <p>Waffle with Berries</p>
-                    <p>6.50</p>
+                    <div class="card-content">
+                        <h2>Crème Brûlée</h2>
+                        <p>Vanilla Bean Crème Brûlée</p>
+                        <p>7.00</p>
+                    </div>
+                </div>
+                <div class="card-3">
+                    <div class="card-image"></div>
+                    <button>
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    <div class="card-content">
+                        <h2>Macaron</h2>
+                        <p>Macaron Mix of Five</p>
+                        <p>8.00</p>
+                    </div>
                 </div>
             </div>
-            <div class="card-2">
-                <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Crème Brûlée</h2>
-                    <p>Vanilla Bean Crème Brûlée</p>
-                    <p>7.00</p>
+            <div class="cards-row-2">
+                <div class="card-4">
+                    <div class="card-image"></div>
+                    <button>
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    <div class="card-content">
+                        <h2>Tiramisu</h2>
+                        <p>Classic Tiramisu</p>
+                        <p>5.50</p>
+                    </div>
+                </div>
+                <div class="card-5">
+                    <div class="card-image"></div>
+                    <button>
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    <div class="card-content">
+                        <h2>Baklava</h2>
+                        <p>Pistachio Baklava</p>
+                        <p>4.00</p>
+                    </div>
+                </div>
+                <div class="card-6">
+                    <div class="card-image"></div>
+                    <button>
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    <div class="card-content">
+                        <h2>Pie</h2>
+                        <p>Lemon Meringue Pie</p>
+                        <p>5.00</p>
+                    </div>
                 </div>
             </div>
-            <div class="card-3">
+            <div class="cards-row-3">
                 <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Macaron</h2>
-                    <p>Macaron Mix of Five</p>
-                    <p>8.00</p>
+                <div class="card-7">
+                    <div class="card-image"></div>
+                    <button>
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    <div class="card-content">
+                        <h2>Red Velvet Cake</h2>
+                        <p>Cake</p>
+                        <p>4.50</p>
+                    </div>
+                </div>
+                <div class="card-8">
+                    <div class="card-image"></div>
+                    <button>
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    <div class="card-content">
+                        <h2>Brownie</h2>
+                        <p>Salted Caramel Brownie</p>
+                        <p>4.50</p>
+                    </div>
+                </div>
+                <div class="card-9">
+                    <div class="card-image"></div>
+                    <button>
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    <div class="card-content">
+                        <h2>Panna Cotta</h2>
+                        <p>Vanilla Panna Cotta</p>
+                        <p>6.50</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="cards-row-2">
-            <div class="card-4">
-                <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Tiramisu</h2>
-                    <p>Classic Tiramisu</p>
-                    <p>5.50</p>
-                </div>
-            </div>
-            <div class="card-5">
-                <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Baklava</h2>
-                    <p>Pistachio Baklava</p>
-                    <p>4.00</p>
-                </div>
-            </div>
-            <div class="card-6">
-                <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Pie</h2>
-                    <p>Lemon Meringue Pie</p>
-                    <p>5.00</p>
-                </div>
-            </div>
-        </div>
-        <div class="cards-row-3">
-            <div class="card-image"></div>
-            <div class="card-7">
-                <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Red Velvet Cake</h2>
-                    <p>Cake</p>
-                    <p>4.50</p>
-                </div>
-            </div>
-            <div class="card-8">
-                <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Brownie</h2>
-                    <p>Salted Caramel Brownie</p>
-                    <p>4.50</p>
-                </div>
-            </div>
-            <div class="card-9">
-                <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
-                <div class="card-content">
-                    <h2>Panna Cotta</h2>
-                    <p>Vanilla Panna Cotta</p>
-                    <p>6.50</p>
-                </div>
-            </div>
+        <div class="cart-container">
+            Your Cart (<!-- Quantity -->) Your added items will appear here
         </div>
     </div>
-    <div class="cart-container">
-        
-        Your Cart (<!-- Quantity -->) Your added items will appear here
-    </div>
-</div>
 </div>
 
 <style lang="scss">
@@ -236,7 +252,7 @@
             align-items: center;
             gap: 2rem;
             margin-top: 2rem;
-            .cart-container{
+            .cart-container {
                 width: 27%;
                 height: 300px;
                 background-color: $Rose50;
@@ -249,7 +265,7 @@
                 font-weight: 700;
                 background-color: aqua;
                 position: absolute;
-                top:13%;
+                top: 13%;
                 left: 70%;
             }
         }
@@ -260,11 +276,32 @@
             display: flex;
             flex-direction: column;
             position: absolute;
-                top:20%;
-                right: 30%;
+            top: 20%;
+            right: 30%;
             gap: 2rem;
             button {
-                        display: flex;
+                display: flex;
+                align-items: center;
+                background-color: $Rose50;
+                color: $Rose900;
+                border: 1.5px solid $Rose900;
+                padding: 0.5rem 1rem;
+                border-radius: 2rem;
+                justify-content: center;
+                position: relative;
+                width: 160px;
+                top: -7%;
+                left: 20%;
+
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 0.5rem;
+                }
+            }
+            .add-to-cart-button,
+            .interactive-button {
+                display: flex;
                         align-items: center;
                         background-color: $Rose50;
                         color: $Rose900;
@@ -276,13 +313,51 @@
                         width: 160px;
                         top: -7%;
                         left: 20%;
+            }
 
-                        .icon {
-                            width: 20px;
-                            height: 20px;
-                            margin-right: 0.5rem;
-                        }
-                    }
+            .interactive-button {
+                justify-content: space-between; 
+                padding: 5px 10px;
+                position: relative;
+            }
+
+            .decrement,
+            .increment {
+                width: 20px;
+                height: 20px;
+                font-size: 20px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #fff;
+                border-radius: 50%;
+                padding: 5px;
+                img{
+                    width: 15px;
+                    height: 15px;
+                    margin: 0 auto;
+                }
+            }
+
+            .count {
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+                color: white;
+
+            }
+
+            .add-to-cart-button:hover,
+            .interactive-button:hover {
+                background-color: $Red;
+                border: none;
+                .icon{
+                    filter: invert(80%);
+                }
+            }
 
             .cards-row-1 {
                 @include cards-row;
@@ -323,7 +398,6 @@
                             background-repeat: no-repeat;
                         }
                     }
-                   
                 }
                 .card-2 {
                     .card-image {
