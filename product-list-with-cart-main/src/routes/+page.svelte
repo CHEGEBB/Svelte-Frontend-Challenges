@@ -228,7 +228,6 @@
                                     <span class="times"> {item.quantity}x</span>
                                     <span class="amount">@ ${(item.price * item.quantity).toFixed(2)}</span>
                                     <span class="amount2">${(item.price * item.quantity).toFixed(2)}</span>
-                                    <hr>
                                 </div>
                                 
                             </div>
@@ -236,6 +235,7 @@
                                 <img src={Removecon} alt="remove"/>
                             </div>
                         </div>
+                        <hr>
                         {/each}
                         <div class="cart-total">
                             <span class="total-order">Order Total</span>
