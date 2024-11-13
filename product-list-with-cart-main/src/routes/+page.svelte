@@ -3,6 +3,8 @@
     import Cartcon from "../images/icon-add-to-cart.svg";
     import Minuscon from "../images/icon-decrement-quantity.svg";
     import Pluscon from "../images/icon-increment-quantity.svg";
+    import EmptyImage from "../images/illustration-empty-cart.svg";
+    import Carboncon from "../images/icon-carbon-neutral.svg";
     
     // Create a store for cart items
     // @ts-ignore
@@ -139,7 +141,7 @@
                             {/if}
                             <div class="card-content">
                                 <h2>{product.name}</h2>
-                                <p>{product.description}</p>
+                                <h3>{product.description}</h3>
                                 <p>${product.price.toFixed(2)}</p>
                             </div>
                         </div>
@@ -173,7 +175,7 @@
                             {/if}
                             <div class="card-content">
                                 <h2>{product.name}</h2>
-                                <p>{product.description}</p>
+                                <h3>{product.description}</h3>
                                 <p>${product.price.toFixed(2)}</p>
                             </div>
                         </div>
@@ -182,7 +184,7 @@
             </div>
     
             <div class="cart-container">
-                Your Cart ({totalQuantity} items)
+               <h2> Your Cart ({totalQuantity})</h2>
                 {#if $cartStore.length > 0}
                     <div class="cart-items">
                         {#each $cartStore as item}
@@ -194,9 +196,23 @@
                         <div class="cart-total">
                             Total: ${totalAmount.toFixed(2)}
                         </div>
+                        <div class="carbon">
+                            <div class="con">
+                                <img src={Carboncon} alt="carboncon"/>
+                            </div>
+                            <h4>This is a <strong>carbon-neutral</strong> delivery</h4>
+                        </div>
+                        <div class="confirm-button">
+                            <button>
+                               <p>Confirm Order</p> 
+                            </button>
+                        </div>
                     </div>
                 {:else}
-                    <p>Your cart is empty</p>
+                <div class="image-cont ">
+                    <img src={EmptyImage} alt="empty"/>
+                </div>
+                    <p>Your added items will appear here</p>
                 {/if}
             </div>
         </div>
@@ -259,10 +275,10 @@
     .container {
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 260vh !important;
         max-width: 100vw;
         font-family: $font-Red-Hat;
-        background: linear-gradient(90deg, $Rose100, $Rose50);
+        background: linear-gradient(90deg, $Rose300, $Rose50);
         overflow-x: hidden;
         h1 {
             font-size: 2rem;
@@ -294,6 +310,10 @@
                 position: absolute;
                 top: 13%;
                 left: 70%;
+                h2{
+                    text-align: left;
+                    color: $Red;
+                }
             }
         }
         .cards-container {
@@ -305,7 +325,7 @@
             position: absolute;
             top: 20%;
             right: 30%;
-            gap: 2rem;
+            gap: 0.2rem;
             button {
                 display: flex;
                 align-items: center;
@@ -414,14 +434,14 @@
         h3{
             font-size: 1.2rem;
             color: $Rose900;
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 1rem;
         }
         p{
             font-size: 1rem;
             color: $Red;
             margin-top: 1rem;
-            font-weight: 600;
+            font-weight: 700;
         }
     }
             .cards-row-1 {
@@ -787,6 +807,7 @@
     justify-content: space-between;
     margin: 0.5rem 0;
     font-size: 1rem;
+   
 }
 
 .cart-total {
@@ -795,5 +816,54 @@
     border-top: 1px solid $Rose300;
     font-weight: bold;
 }
+.carbon{
+    background-color: $Rose100;
+    width: 95%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    border-radius: 8px;
+    h4{
+        font-size: 12px;
+        font-weight: 500;
+     
+    }
+    
+}
+.confirm-button{
+    margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+        margin-top: 10px;
+    button{
+        background-color: $Red;
+        width: 290px;
+        padding: 10px;
+        border-radius: 18px;
+        p{
+            color: $Rose50;
+        }
+
+    }
+}
+
+.image-cont{
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    img{
+        margin: 0 auto;
+
+    }
+}
+p{
+        font-size: 12px;
+        color:$Rose500;
+    }
     }
 </style>
