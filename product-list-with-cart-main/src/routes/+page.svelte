@@ -37,6 +37,38 @@
             return items;
         });
     }
+    // @ts-ignore
+    // @ts-ignore
+    function removeFromCart(product) {
+        // Update the cart store
+        // @ts-ignore
+        cartStore.update(items => {
+            // Find the existing item
+            // @ts-ignore
+            const existingItem = items.find(item => item.id === product.id);
+            
+            // If item doesn't exist, return unchanged cart
+            if (!existingItem) {
+                return items;
+            }
+            
+            // If quantity is 1, remove the item completely
+            // @ts-ignore
+            if (existingItem.quantity === 1) {
+                // @ts-ignore
+                return items.filter(item => item.id !== product.id);
+            }
+            
+            // If quantity > 1, decrease quantity by 1
+            return items.map(item => 
+                // @ts-ignore
+                item.id === product.id 
+                    // @ts-ignore
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            );
+        });
+    }
     
     // @ts-ignore
     function incrementQuantity(productId) {
@@ -199,12 +231,14 @@
                                 </div>
                                 
                             </div>
-                            <div class="remove">
+                            <div class="remove" on:click={() => removeFromCart(item)}>
                                 <img src={Removecon} alt="remove"/>
                             </div>
                         </div>
                         {/each}
                         <div class="cart-total">
+                            <span>Order Total</span>
+                            <span></span>
                             Total: ${totalAmount.toFixed(2)}
                         </div>
                         <div class="carbon">
@@ -826,8 +860,17 @@
         margin-top: 10px;
         position: relative;
         left: 27%;
+        &:hover{
+            border: 2px solid $Rose500;
+            cursor: pointer;
+            background-color: $Rose100;
+        }
         img{
             margin: 0 auto;
+            &:hover{
+                transform: scale(1.1);
+                cursor: pointer;
+            }
         }
     }
 
@@ -854,6 +897,11 @@
             font-size: 1rem;
         font-weight: 600;
         color: $Rose400;
+        }
+        .amount2{
+            font-size: 1rem;
+        font-weight: 700;
+        color: $Rose500;
         }
     }
    
