@@ -228,6 +228,7 @@
                                     <span class="times"> {item.quantity}x</span>
                                     <span class="amount">@ ${(item.price * item.quantity).toFixed(2)}</span>
                                     <span class="amount2">${(item.price * item.quantity).toFixed(2)}</span>
+                                    <hr>
                                 </div>
                                 
                             </div>
@@ -858,8 +859,8 @@
         padding: 5px;
         justify-content: flex-end;
         margin-top: 10px;
-        position: relative;
-        left: 27%;
+        position: absolute;
+        left: 84%;
         &:hover{
             border: 2px solid $Rose500;
             cursor: pointer;
