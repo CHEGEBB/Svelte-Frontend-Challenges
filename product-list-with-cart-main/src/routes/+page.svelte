@@ -1,5 +1,24 @@
-<script>
+<script lang="javascript">
     import Cartcon from "../images/icon-add-to-cart.svg";
+
+    let count = 0;
+    const buttonColor = "red";
+
+    const handleClick = ()=>{
+        const buttonColor = "green";
+        count = count === 0 ? 1 : count; 
+    }
+
+    const increment =()=>{
+        count++;
+
+    }
+    const decrement =()=>{
+        count--;
+
+    }
+
+
 </script>
 
 <div class="container">
@@ -9,10 +28,21 @@
         <div class="cards-row-1">
             <div class="card-1">
                 <div class="card-image"></div>
-                <button>
-                    <img class="icon" src={Cartcon} alt="Cart Icon" />
-                    Add to Cart
-                </button>
+                    
+                    <!-- Button for adding to cart -->
+                    <button on:click={handleClick} style="background-color: {buttonColor}">
+                        <img class="icon" src={Cartcon} alt="Cart Icon" />
+                        Add to Cart
+                    </button>
+                    
+                    <!-- Increment and Decrement buttons with centered count -->
+                    {#if count > 0}
+                        <div class="counter">
+                            <button class="decrement" on:click={decrement}>-</button>
+                            <span class="count">{count}</span>
+                            <button class="increment" on:click={increment}>+</button>
+                        </div>
+                    {/if}
                 <div class="card-content">
                     <h2>Waffle</h2>
                     <p>Waffle with Berries</p>
