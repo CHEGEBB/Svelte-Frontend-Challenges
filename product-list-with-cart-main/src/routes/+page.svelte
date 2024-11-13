@@ -1,179 +1,193 @@
-<script lang="javascript">
+<script>
+    import { writable } from 'svelte/store';
     import Cartcon from "../images/icon-add-to-cart.svg";
     import Minuscon from "../images/icon-decrement-quantity.svg";
     import Pluscon from "../images/icon-increment-quantity.svg";
-
-    let count = 0;
-    const buttonColor = "red";
-
-    const handleClick = () => {
-        const buttonColor = "green";
-        count = 1;
-    };
-
-    const increment = () => {
-        count++;
-    };
-    const decrement = () => {
-        if (count > 1) {
-            count--;
-        } else {
-            count = 0;
-        }
-    };
-</script>
-
-<div class="container">
-    <h1>Desserts</h1>
-    <div class="main-content">
-        <div class="cards-container">
-            <div class="cards-row-1">
-                <div class="card-1">
-                    <div class="card-image"></div>
-
-                    {#if count === 0}
-                        <!-- Initial Add to Cart Button -->
-                        <button
-                            class="add-to-cart-button"
-                            on:click={handleClick}
-                        >
-                            <img class="icon" src={Cartcon} alt="Cart Icon" />
-                            Add to Cart
-                        </button>
-                    {:else}
-                        <!-- Interactive Button with Increment and Decrement -->
-                        <button class="interactive-button">
-                            <span class="decrement" on:click={decrement}>
-                                <img
-                                    class="icon"
-                                    src={Minuscon}
-                                    alt="Minus Icon"
-                                />
-                            </span>
-                            <span class="count">{count}</span>
-                            <span class="increment" on:click={increment}>
-                                <img
-                                    class="icon"
-                                    src={Pluscon}
-                                    alt="Plus Icon"
-                                />
-                            </span>
-                        </button>
-                    {/if}
-                    <div class="card-content">
-                        <h2>Waffle</h2>
-                        <p>Waffle with Berries</p>
-                        <p>6.50</p>
-                    </div>
+    
+    // Create a store for cart items
+    const cartStore = writable([]);
+    
+    // Product data
+    const products = [
+        { id: 1, name: 'Waffle', description: 'Waffle with Berries', price: 6.50 },
+        { id: 2, name: 'Crème Brûlée', description: 'Vanilla Bean Crème Brûlée', price: 7.00 },
+        { id: 3, name: 'Macaron', description: 'Macaron Mix of Five', price: 8.00 },
+        { id: 4, name: 'Tiramisu', description: 'Classic Tiramisu', price: 5.50 },
+        { id: 5, name: 'Baklava', description: 'Pistachio Baklava', price: 4.00 },
+        { id: 6, name: 'Pie', description: 'Lemon Meringue Pie', price: 5.00 },
+        { id: 7, name: 'Red Velvet Cake', description: 'Cake', price: 4.50 },
+        { id: 8, name: 'Brownie', description: 'Salted Caramel Brownie', price: 4.50 },
+        { id: 9, name: 'Panna Cotta', description: 'Vanilla Panna Cotta', price: 6.50 }
+    ];
+    
+    // Cart management functions
+    function addToCart(product) {
+        cartStore.update(items => {
+            const existingItem = items.find(item => item.id === product.id);
+            if (!existingItem) {
+                return [...items, { ...product, quantity: 1 }];
+            }
+            return items;
+        });
+    }
+    
+    function incrementQuantity(productId) {
+        cartStore.update(items => 
+            items.map(item => 
+                item.id === productId 
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            )
+        );
+    }
+    
+    function decrementQuantity(productId) {
+        cartStore.update(items => {
+            const updatedItems = items.map(item => {
+                if (item.id === productId) {
+                    const newQuantity = item.quantity - 1;
+                    return newQuantity > 0 
+                        ? { ...item, quantity: newQuantity }
+                        : null;
+                }
+                return item;
+            }).filter(Boolean);
+            return updatedItems;
+        });
+    }
+    
+    // Calculate total quantity
+    $: totalQuantity = $cartStore.reduce((sum, item) => sum + item.quantity, 0);
+    $: totalAmount = $cartStore.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+    </script>
+    
+    <div class="container">
+        <h1>Desserts</h1>
+        <div class="main-content">
+            <div class="cards-container">
+                <div class="cards-row-1">
+                    {#each products.slice(0, 3) as product (product.id)}
+                        <div class="card-{product.id}">
+                            <div class="card-image"></div>
+                            {#if !$cartStore.find(item => item.id === product.id)}
+                                <button
+                                    class="add-to-cart-button"
+                                    on:click={() => addToCart(product)}
+                                >
+                                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                                    Add to Cart
+                                </button>
+                            {:else}
+                                <button class="interactive-button">
+                                    <span class="decrement" on:click={() => decrementQuantity(product.id)}>
+                                        <img class="icon" src={Minuscon} alt="Minus Icon" />
+                                    </span>
+                                    <span class="count">
+                                        {$cartStore.find(item => item.id === product.id)?.quantity || 0}
+                                    </span>
+                                    <span class="increment" on:click={() => incrementQuantity(product.id)}>
+                                        <img class="icon" src={Pluscon} alt="Plus Icon" />
+                                    </span>
+                                </button>
+                            {/if}
+                            <div class="card-content">
+                                <h2>{product.name}</h2>
+                                <p>{product.description}</p>
+                                <p>${product.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    {/each}
                 </div>
-                <div class="card-2">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Crème Brûlée</h2>
-                        <p>Vanilla Bean Crème Brûlée</p>
-                        <p>7.00</p>
-                    </div>
+                
+                <div class="cards-row-2">
+                    {#each products.slice(3, 6) as product (product.id)}
+                        <div class="card-{product.id}">
+                            <div class="card-image"></div>
+                            {#if !$cartStore.find(item => item.id === product.id)}
+                                <button
+                                    class="add-to-cart-button"
+                                    on:click={() => addToCart(product)}
+                                >
+                                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                                    Add to Cart
+                                </button>
+                            {:else}
+                                <button class="interactive-button">
+                                    <span class="decrement" on:click={() => decrementQuantity(product.id)}>
+                                        <img class="icon" src={Minuscon} alt="Minus Icon" />
+                                    </span>
+                                    <span class="count">
+                                        {$cartStore.find(item => item.id === product.id)?.quantity || 0}
+                                    </span>
+                                    <span class="increment" on:click={() => incrementQuantity(product.id)}>
+                                        <img class="icon" src={Pluscon} alt="Plus Icon" />
+                                    </span>
+                                </button>
+                            {/if}
+                            <div class="card-content">
+                                <h2>{product.name}</h2>
+                                <p>{product.description}</p>
+                                <p>${product.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    {/each}
                 </div>
-                <div class="card-3">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Macaron</h2>
-                        <p>Macaron Mix of Five</p>
-                        <p>8.00</p>
-                    </div>
-                </div>
-            </div>
-            <div class="cards-row-2">
-                <div class="card-4">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Tiramisu</h2>
-                        <p>Classic Tiramisu</p>
-                        <p>5.50</p>
-                    </div>
-                </div>
-                <div class="card-5">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Baklava</h2>
-                        <p>Pistachio Baklava</p>
-                        <p>4.00</p>
-                    </div>
-                </div>
-                <div class="card-6">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Pie</h2>
-                        <p>Lemon Meringue Pie</p>
-                        <p>5.00</p>
-                    </div>
-                </div>
-            </div>
-            <div class="cards-row-3">
-                <div class="card-image"></div>
-                <div class="card-7">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Red Velvet Cake</h2>
-                        <p>Cake</p>
-                        <p>4.50</p>
-                    </div>
-                </div>
-                <div class="card-8">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Brownie</h2>
-                        <p>Salted Caramel Brownie</p>
-                        <p>4.50</p>
-                    </div>
-                </div>
-                <div class="card-9">
-                    <div class="card-image"></div>
-                    <button>
-                        <img class="icon" src={Cartcon} alt="Cart Icon" />
-                        Add to Cart
-                    </button>
-                    <div class="card-content">
-                        <h2>Panna Cotta</h2>
-                        <p>Vanilla Panna Cotta</p>
-                        <p>6.50</p>
-                    </div>
+    
+                <div class="cards-row-3">
+                    {#each products.slice(6) as product (product.id)}
+                        <div class="card-{product.id}">
+                            <div class="card-image"></div>
+                            {#if !$cartStore.find(item => item.id === product.id)}
+                                <button
+                                    class="add-to-cart-button"
+                                    on:click={() => addToCart(product)}
+                                >
+                                    <img class="icon" src={Cartcon} alt="Cart Icon" />
+                                    Add to Cart
+                                </button>
+                            {:else}
+                                <button class="interactive-button">
+                                    <span class="decrement" on:click={() => decrementQuantity(product.id)}>
+                                        <img class="icon" src={Minuscon} alt="Minus Icon" />
+                                    </span>
+                                    <span class="count">
+                                        {$cartStore.find(item => item.id === product.id)?.quantity || 0}
+                                    </span>
+                                    <span class="increment" on:click={() => incrementQuantity(product.id)}>
+                                        <img class="icon" src={Pluscon} alt="Plus Icon" />
+                                    </span>
+                                </button>
+                            {/if}
+                            <div class="card-content">
+                                <h2>{product.name}</h2>
+                                <p>{product.description}</p>
+                                <p>${product.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    {/each}
                 </div>
             </div>
-        </div>
-        <div class="cart-container">
-            Your Cart (<!-- Quantity -->) Your added items will appear here
+    
+            <div class="cart-container">
+                Your Cart ({totalQuantity} items)
+                {#if $cartStore.length > 0}
+                    <div class="cart-items">
+                        {#each $cartStore as item}
+                            <div class="cart-item">
+                                <span>{item.name} x {item.quantity}</span>
+                                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                            </div>
+                        {/each}
+                        <div class="cart-total">
+                            Total: ${totalAmount.toFixed(2)}
+                        </div>
+                    </div>
+                {:else}
+                    <p>Your cart is empty</p>
+                {/if}
+            </div>
         </div>
     </div>
-</div>
 
 <style lang="scss">
     @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&display=swap");
@@ -254,7 +268,7 @@
             margin-top: 2rem;
             .cart-container {
                 width: 27%;
-                height: 300px;
+                height: auto;
                 background-color: $Rose50;
                 padding: 20px;
                 border-radius: 1rem;
@@ -263,7 +277,7 @@
                 font-size: 1.5rem;
                 color: $Rose900;
                 font-weight: 700;
-                background-color: aqua;
+                background-color: #ffffff;
                 position: absolute;
                 top: 13%;
                 left: 70%;
@@ -299,66 +313,84 @@
                     margin-right: 0.5rem;
                 }
             }
-            .add-to-cart-button,
-            .interactive-button {
-                display: flex;
-                        align-items: center;
-                        background-color: $Rose50;
-                        color: $Rose900;
-                        border: 1.5px solid $Rose900;
-                        padding: 0.5rem 1rem;
-                        border-radius: 2rem;
-                        justify-content: center;
-                        position: relative;
-                        width: 160px;
-                        top: -7%;
-                        left: 20%;
+            .add-to-cart-button {
+        display: flex;
+        align-items: center;
+        background-color: $Rose50;
+        color: $Rose900;
+        border: 1.5px solid $Rose900;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        justify-content: center;
+        position: relative;
+        width: 160px;
+        top: -7%;
+        left: 20%;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: $Red;
+            border: none;
+            color: white;
+            .icon {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    .interactive-button {
+        display: flex;
+        align-items: center;
+        background-color: $Red;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        justify-content: space-between;
+        position: relative;
+        width: 160px;
+        top: -7%;
+        left: 20%;
+
+        .icon {
+            filter: brightness(0) invert(1);
+        }
+
+        .count {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            margin: 0 0.5rem;
+        }
+
+        .decrement,
+        .increment {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $Rose50;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 5px;
+
+            &:hover {
+                background:$Rose50;
+
             }
 
-            .interactive-button {
-                justify-content: space-between; 
-                padding: 5px 10px;
-                position: relative;
-            }
-
-            .decrement,
-            .increment {
-                width: 20px;
-                height: 20px;
-                font-size: 20px;
-                background: none;
-                border: none;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #fff;
-                border-radius: 50%;
-                padding: 5px;
-                img{
-                    width: 15px;
-                    height: 15px;
-                    margin: 0 auto;
+            img {
+                width: 15px;
+                height: 15px;
+                filter: brightness(0) invert(1);
+                margin :0 auto;
+                &:hover{
+                    filter: brightness(0) invert(0.5);
                 }
             }
-
-            .count {
-                font-size: 18px;
-                font-weight: bold;
-                text-align: center;
-                color: white;
-
-            }
-
-            .add-to-cart-button:hover,
-            .interactive-button:hover {
-                background-color: $Red;
-                border: none;
-                .icon{
-                    filter: invert(80%);
-                }
-            }
-
+        }
+    }
             .cards-row-1 {
                 @include cards-row;
                 .card-1 {
@@ -712,5 +744,23 @@
                 }
             }
         }
+        .cart-items {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.cart-total {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid $Rose300;
+    font-weight: bold;
+}
     }
 </style>
