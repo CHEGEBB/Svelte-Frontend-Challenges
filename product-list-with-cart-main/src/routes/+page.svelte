@@ -237,9 +237,9 @@
                         </div>
                         {/each}
                         <div class="cart-total">
-                            <span>Order Total</span>
-                            <span></span>
-                            Total: ${totalAmount.toFixed(2)}
+                            <span class="total-order">Order Total</span>
+                            <span class="total-amount">${totalAmount.toFixed(2)}</span>
+                            
                         </div>
                         <div class="carbon">
                             <div class="con">
@@ -913,6 +913,14 @@
     padding-top: 1rem;
     border-top: 1px solid $Rose300;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .total-order{
+        font-size: 16px;
+        color:$Rose400;
+        font-weight: 600;
+    }
 }
 .carbon{
     background-color: $Rose100;
