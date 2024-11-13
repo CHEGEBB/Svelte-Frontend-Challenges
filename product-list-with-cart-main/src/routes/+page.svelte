@@ -1,10 +1,11 @@
-<script>
+<script lang="Typescript">
     import { writable } from 'svelte/store';
     import Cartcon from "../images/icon-add-to-cart.svg";
     import Minuscon from "../images/icon-decrement-quantity.svg";
     import Pluscon from "../images/icon-increment-quantity.svg";
     
     // Create a store for cart items
+    // @ts-ignore
     const cartStore = writable([]);
     
     // Product data
@@ -21,8 +22,11 @@
     ];
     
     // Cart management functions
+    // @ts-ignore
     function addToCart(product) {
+        // @ts-ignore
         cartStore.update(items => {
+            // @ts-ignore
             const existingItem = items.find(item => item.id === product.id);
             if (!existingItem) {
                 return [...items, { ...product, quantity: 1 }];
@@ -31,22 +35,31 @@
         });
     }
     
+    // @ts-ignore
     function incrementQuantity(productId) {
         cartStore.update(items => 
+            // @ts-ignore
             items.map(item => 
+                // @ts-ignore
                 item.id === productId 
+                    // @ts-ignore
                     ? { ...item, quantity: item.quantity + 1 }
                     : item
             )
         );
     }
     
+    // @ts-ignore
     function decrementQuantity(productId) {
+        // @ts-ignore
         cartStore.update(items => {
             const updatedItems = items.map(item => {
+                // @ts-ignore
                 if (item.id === productId) {
+                    // @ts-ignore
                     const newQuantity = item.quantity - 1;
                     return newQuantity > 0 
+                        // @ts-ignore
                         ? { ...item, quantity: newQuantity }
                         : null;
                 }
