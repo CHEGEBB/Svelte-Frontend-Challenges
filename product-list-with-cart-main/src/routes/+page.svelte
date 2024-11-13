@@ -5,6 +5,7 @@
     import Pluscon from "../images/icon-increment-quantity.svg";
     import EmptyImage from "../images/illustration-empty-cart.svg";
     import Carboncon from "../images/icon-carbon-neutral.svg";
+    import Removecon from "../images/icon-remove-item.svg";
     
     // Create a store for cart items
     // @ts-ignore
@@ -188,10 +189,20 @@
                 {#if $cartStore.length > 0}
                     <div class="cart-items">
                         {#each $cartStore as item}
+                        <div class="item">
                             <div class="cart-item">
-                                <span>{item.name} x {item.quantity}</span>
-                                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                                <span class="description">{item.description} </span>
+                                <div class="cash">
+                                    <span class="times"> {item.quantity}x</span>
+                                    <span class="amount">@ ${(item.price * item.quantity).toFixed(2)}</span>
+                                    <span class="amount2">${(item.price * item.quantity).toFixed(2)}</span>
+                                </div>
+                                
                             </div>
+                            <div class="remove">
+                                <img src={Removecon} alt="remove"/>
+                            </div>
+                        </div>
                         {/each}
                         <div class="cart-total">
                             Total: ${totalAmount.toFixed(2)}
@@ -801,13 +812,52 @@
     margin-top: 1rem;
     text-align: left;
 }
+.item{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    .remove{
+        width: 20px;
+        height: 20px;
+        border: 1px solid $Rose300;
+        border-radius: 50%;
+        padding: 5px;
+        justify-content: flex-end;
+        margin-top: 10px;
+        position: relative;
+        left: 27%;
+        img{
+            margin: 0 auto;
+        }
+    }
+
 
 .cart-item {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin: 0.5rem 0;
     font-size: 1rem;
+    .description{
+        color:$Rose900;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+    .cash{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        .times{
+            color: $Red;
+        }
+        .amount{
+            font-size: 1rem;
+        font-weight: 600;
+        color: $Rose400;
+        }
+    }
    
+}
 }
 
 .cart-total {
