@@ -105,7 +105,7 @@
                             {/if}
                             <div class="card-content">
                                 <h2>{product.name}</h2>
-                                <p>{product.description}</p>
+                                <h3>{product.description}</h3>
                                 <p>${product.price.toFixed(2)}</p>
                             </div>
                         </div>
@@ -402,6 +402,26 @@
                     filter: brightness(0) invert(0.5);
                 }
             }
+        }
+    }
+    .card-content{
+        h2{
+            font-size: 17px;
+            color: $Rose500;
+            font-weight: 600;
+            text-align: left;
+        }
+        h3{
+            font-size: 1.2rem;
+            color: $Rose900;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        p{
+            font-size: 1rem;
+            color: $Red;
+            margin-top: 1rem;
+            font-weight: 600;
         }
     }
             .cards-row-1 {
