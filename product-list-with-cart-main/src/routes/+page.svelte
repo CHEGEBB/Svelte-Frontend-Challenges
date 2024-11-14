@@ -1132,6 +1132,9 @@
                 justify-content: space-between;
                 margin: 0.5rem 0;
                 font-size: 1rem;
+                @include respond-to(("large-desktop"){
+                    margin-left: 30px;
+                })
                 .description {
                     color: $Rose900;
                     font-size: 1rem;
