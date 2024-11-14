@@ -71,22 +71,18 @@
     function closeModal() {
         isModalOpen.set(false);
     }
-    // @ts-ignore
+
     function handleConfirmOrder() {
-        cartStore.set([]);
         openOverlay();
         openModal();
     }
+
     function openOverlay() {
         isOverlayOpen.set(true);
     }
 
     function closeOverlay() {
         isOverlayOpen.set(false);
-    }
-    function finalizeOrder() {
-        cartStore.set([]);
-        closeOverlay();
     }
 
     // @ts-ignore
@@ -413,37 +409,48 @@
         </div>
 
         {#if $isOverlayOpen}
-    <div class="overlay" on:click={()=> handleConfirmOrder(items)}>
-        <div class="overlay-content" on:click|stopPropagation>
+    <div class="overlay" on:click={handleConfirmOrder}>
+        <div class="overlay-content">
             <h2>Order Confirmation</h2>
             <div class="order-details">
-                <div class="summary">
-                    <p class="total">Total Amount: ${totalAmount.toFixed(2)}</p>
-                    <p class="items">Number of Items: {totalQuantity}</p>
-                </div>
-                <div class="items-list">
-                    {#each $cartStore as item}
-                        <div class="order-item">
-                            <span class="item-name">{item.description}</span>
-                            <div class="item-details">
-                                <span class="quantity">{item.quantity}x</span>
-                                <span class="price">@ ${item.price.toFixed(2)}</span>
-                                <span class="total-price">${(item.quantity * item.price).toFixed(2)}</span>
-                            </div>
-                        </div>
-                    {/each}
-                </div>
-                <div class="carbon-notice">
-                    <img src={Carboncon} alt="carbon neutral" />
-                    <p>Carbon Neutral Delivery</p>
-                </div>
+              <div class="summary">
+                <p class="total">Total Amount: ${totalAmount.toFixed(2)}</p>
+                <p class="items">Number of Items: {totalQuantity}</p>
+              </div>
+              <div class="items-list">
+                {#each $cartStore as item}
+                  <div class="order-item">
+                    {#if item.imageComponent}
+                      <div class="item-image">
+                        <svelte:component this={item.imageComponent} />
+                      </div>
+                    {:else if item.imageUrl}
+                      <div class="item-image">
+                        <img src={item.imageUrl} alt={item.description} />
+                      </div>
+                    {/if}
+                    <div class="item-details">
+                      <span class="item-name">{item.description}</span>
+                      <div class="item-info">
+                        <span class="quantity">{item.quantity}x</span>
+                        <span class="price">@ ${item.price.toFixed(2)}</span>
+                        <span class="total-price">${(item.quantity * item.price).toFixed(2)}</span>
+                      </div>
+                    </div>
+                  </div>
+                {/each}
+              </div>
+              <div class="carbon-notice">
+                <img src={Carboncon} alt="carbon neutral" />
+                <p>Carbon Neutral Delivery</p>
+              </div>
             </div>
             <div class="overlay-actions">
-                <button class="cancel" on:click={closeOverlay}>Cancel</button>
-                <button class="confirm" on:click={finalizeOrder}>Confirm Purchase</button>
+              <button class="cancel" on:click={closeOverlay()}>Cancel</button>
+              <button class="confirm" on:click={closeModal()}>Confirm Purchase</button>
             </div>
+          </div>
         </div>
-    </div>
 {/if}
     </div>
 </div>
@@ -495,6 +502,11 @@
                 @content;
             }
         }
+        @if $breakpoint == "thumbnail"{
+            @media (max-width: 300px) {
+                @content;
+            }
+        }
     }
 
     * {
@@ -503,6 +515,7 @@
         box-sizing: border-box;
     }
     .container {
+        
         display: flex;
         flex-direction: column;
         min-height: 260vh !important;
@@ -519,12 +532,19 @@
             margin-top: 60px;
         }
         .main-content {
+           
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             gap: 2rem;
             margin-top: 2rem;
+
+            @include respond-to("mobile"){
+                    display: flex;
+                    flex-direction: column;
+                    background-color: red;
+                }
             .cart-container {
                 width: 27%;
                 height: auto;
@@ -675,6 +695,10 @@
             }
             .cards-row-1 {
                 @include cards-row;
+                @include respond-to("mobile"){
+                    display: flex;
+                    flex-direction: column;
+                }
                 .card-1 {
                     margin: 1rem;
                     .card-image {
@@ -792,6 +816,10 @@
             }
             .cards-row-2 {
                 @include cards-row;
+                @include respond-to("mobile"){
+                    display: flex;
+                    flex-direction: column;
+                }
                 .card-4 {
                     margin: 1rem;
                     .card-image {
@@ -909,6 +937,10 @@
             }
             .cards-row-3 {
                 @include cards-row;
+                @include respond-to("mobile"){
+                    display: flex;
+                    flex-direction: column;
+                }
 
                 .card-7 {
                     .card-image {
