@@ -409,49 +409,74 @@
         </div>
 
         {#if $isOverlayOpen}
-    <div class="overlay" on:click={handleConfirmOrder}>
-        <div class="overlay-content">
-            <h2>Order Confirmation</h2>
-            <div class="order-details">
-              <div class="summary">
-                <p class="total">Total Amount: ${totalAmount.toFixed(2)}</p>
-                <p class="items">Number of Items: {totalQuantity}</p>
-              </div>
-              <div class="items-list">
-                {#each $cartStore as item}
-                  <div class="order-item">
-                    {#if item.imageComponent}
-                      <div class="item-image">
-                        <svelte:component this={item.imageComponent} />
-                      </div>
-                    {:else if item.imageUrl}
-                      <div class="item-image">
-                        <img src={item.imageUrl} alt={item.description} />
-                      </div>
-                    {/if}
-                    <div class="item-details">
-                      <span class="item-name">{item.description}</span>
-                      <div class="item-info">
-                        <span class="quantity">{item.quantity}x</span>
-                        <span class="price">@ ${item.price.toFixed(2)}</span>
-                        <span class="total-price">${(item.quantity * item.price).toFixed(2)}</span>
-                      </div>
+            <div class="overlay" on:click={handleConfirmOrder}>
+                <div class="overlay-content">
+                    <h2>Order Confirmation</h2>
+                    <div class="order-details">
+                        <div class="summary">
+                            <p class="total">
+                                Total Amount: ${totalAmount.toFixed(2)}
+                            </p>
+                            <p class="items">
+                                Number of Items: {totalQuantity}
+                            </p>
+                        </div>
+                        <div class="items-list">
+                            {#each $cartStore as item}
+                                <div class="order-item">
+                                    {#if item.imageComponent}
+                                        <div class="item-image">
+                                            <svelte:component
+                                                this={item.imageComponent}
+                                            />
+                                        </div>
+                                    {:else if item.imageUrl}
+                                        <div class="item-image">
+                                            <img
+                                                src={item.imageUrl}
+                                                alt={item.description}
+                                            />
+                                        </div>
+                                    {/if}
+                                    <div class="item-details">
+                                        <span class="item-name"
+                                            >{item.description}</span
+                                        >
+                                        <div class="item-info">
+                                            <span class="quantity"
+                                                >{item.quantity}x</span
+                                            >
+                                            <span class="price"
+                                                >@ ${item.price.toFixed(
+                                                    2,
+                                                )}</span
+                                            >
+                                            <span class="total-price"
+                                                >${(
+                                                    item.quantity * item.price
+                                                ).toFixed(2)}</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            {/each}
+                        </div>
+                        <div class="carbon-notice">
+                            <img src={Carboncon} alt="carbon neutral" />
+                            <p>Carbon Neutral Delivery</p>
+                        </div>
                     </div>
-                  </div>
-                {/each}
-              </div>
-              <div class="carbon-notice">
-                <img src={Carboncon} alt="carbon neutral" />
-                <p>Carbon Neutral Delivery</p>
-              </div>
+                    <div class="overlay-actions">
+                        <button class="cancel" on:click={closeOverlay()}
+                            >Cancel</button
+                        >
+                        <button class="confirm" on:click={closeModal()}
+                            >Confirm Purchase</button
+                        >
+                    </div>
+                </div>
             </div>
-            <div class="overlay-actions">
-              <button class="cancel" on:click={closeOverlay()}>Cancel</button>
-              <button class="confirm" on:click={closeModal()}>Confirm Purchase</button>
-            </div>
-          </div>
-        </div>
-{/if}
+        {/if}
     </div>
 </div>
 
@@ -502,7 +527,7 @@
                 @content;
             }
         }
-        @if $breakpoint == "thumbnail"{
+        @if $breakpoint == "thumbnail" {
             @media (max-width: 300px) {
                 @content;
             }
@@ -515,13 +540,14 @@
         box-sizing: border-box;
     }
     .container {
-        
+       
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         min-height: 260vh !important;
         max-width: 100vw;
         font-family: $font-Red-Hat;
-        background: linear-gradient(90deg, $Rose300, $Rose50);
+        background: linear-gradient(90deg, $Rose100, $Rose50);
+
         overflow-x: hidden;
         h1 {
             font-size: 2rem;
@@ -532,20 +558,19 @@
             margin-top: 60px;
         }
         .main-content {
-           
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             gap: 2rem;
             margin-top: 2rem;
-
-            @include respond-to("mobile"){
-                    display: flex;
-                    flex-direction: column;
-                    background-color: red;
-                }
+            @include respond-to('mobile'){
+            display: flex;
+            flex-direction: column !important;
+            padding: 4rem;
+        }
             .cart-container {
+                
                 width: 27%;
                 height: auto;
                 background-color: $Rose50;
@@ -565,8 +590,9 @@
                     color: $Red;
                 }
             }
-        }
+       
         .cards-container {
+            
             padding: 20px;
             width: 70%;
             height: 100%;
@@ -597,6 +623,12 @@
                 }
             }
             .add-to-cart-button {
+                @include respond-to("mobile") {
+                    width: 250px;
+                    height: 50px;
+                    margin: 0 auto;
+                    margin-top: -20px;
+                }
                 display: flex;
                 align-items: center;
                 background-color: $Rose50;
@@ -622,6 +654,12 @@
             }
 
             .interactive-button {
+                @include respond-to("mobile") {
+                    width: 250px;
+                    height: 50px;
+                    margin: 0 auto;
+                    margin-top: -20px;
+                }
                 display: flex;
                 align-items: center;
                 background-color: $Red;
@@ -695,7 +733,7 @@
             }
             .cards-row-1 {
                 @include cards-row;
-                @include respond-to("mobile"){
+                @include respond-to("mobile") {
                     display: flex;
                     flex-direction: column;
                 }
@@ -728,8 +766,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-waffle-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -765,8 +803,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-creme-brulee-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -803,8 +841,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-macaron-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -816,7 +854,7 @@
             }
             .cards-row-2 {
                 @include cards-row;
-                @include respond-to("mobile"){
+                @include respond-to("mobile") {
                     display: flex;
                     flex-direction: column;
                 }
@@ -849,8 +887,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-tiramisu-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -886,8 +924,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-baklava-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -924,8 +962,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-meringue-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -937,10 +975,6 @@
             }
             .cards-row-3 {
                 @include cards-row;
-                @include respond-to("mobile"){
-                    display: flex;
-                    flex-direction: column;
-                }
 
                 .card-7 {
                     .card-image {
@@ -970,8 +1004,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-cake-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -1008,8 +1042,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-brownie-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -1046,8 +1080,8 @@
                             background-repeat: no-repeat;
                         }
                         @include respond-to("mobile") {
-                            width: 150px;
-                            height: 150px;
+                            width: 300px;
+                            height: 300px;
                             background: url("../images/image-panna-cotta-mobile.jpg");
                             background-size: cover;
                             background-position: center;
@@ -1058,9 +1092,11 @@
                 }
             }
         }
+    
         .cart-items {
             margin-top: 1rem;
             text-align: left;
+            
         }
         .item {
             display: flex;
@@ -1152,6 +1188,11 @@
             }
         }
         .confirm-button {
+            @include respond-to("mobile") {
+                    width: 200px;
+                    height: 50px;
+                    margin-left: -14px;
+                }
             margin: 0 auto;
             justify-content: center;
             align-items: center;
@@ -1167,8 +1208,9 @@
                 }
             }
         }
-
+    }
         .image-cont {
+            
             margin: 0 auto;
             justify-content: center;
             align-items: center;
@@ -1181,142 +1223,221 @@
             color: $Rose500;
         }
         .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        
-        .overlay-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            
-            h2 {
-                color: $Rose900;
-                font-size: 1.5rem;
-                margin-bottom: 1.5rem;
-                text-align: center;
-            }
-            
-            .order-details {
-                .summary {
-                    margin-bottom: 1.5rem;
-                    padding-bottom: 1rem;
-                    border-bottom: 1px solid $Rose100;
-                    
-                    p {
-                        color: $Rose900;
-                        font-size: 1.1rem;
-                        margin-bottom: 0.5rem;
-                        
-                        &.total {
-                            font-weight: 700;
-                            color: $Red;
-                        }
-                    }
-                }
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+
+            .overlay-content {
                 
-                .items-list {
-                    .order-item {
-                        display: flex;
-                        justify-content: space-between;
-                        margin-bottom: 1rem;
-                        padding: 0.5rem;
-                        background-color: $Rose50;
-                        border-radius: 0.5rem;
-                        
-                        .item-name {
+                background-color: white;
+                padding: 2rem;
+                border-radius: 1rem;
+                width: 90%;
+                max-width: 500px;
+                max-height: 80vh;
+                overflow-y: auto;
+
+                h2 {
+                    color: $Rose900;
+                    font-size: 1.5rem;
+                    margin-bottom: 1.5rem;
+                    text-align: center;
+                }
+
+                .order-details {
+                    .summary {
+                        margin-bottom: 1.5rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 1px solid $Rose100;
+
+                        p {
                             color: $Rose900;
-                            font-weight: 600;
-                        }
-                        
-                        .item-details {
-                            display: flex;
-                            gap: 0.5rem;
-                            
-                            .quantity {
+                            font-size: 1.1rem;
+                            margin-bottom: 0.5rem;
+
+                            &.total {
+                                font-weight: 700;
                                 color: $Red;
                             }
-                            
-                            .price {
-                                color: $Rose400;
-                            }
-                            
-                            .total-price {
-                                font-weight: 700;
+                        }
+                    }
+
+                    .items-list {
+                        .order-item {
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 1rem;
+                            padding: 0.5rem;
+                            background-color: $Rose50;
+                            border-radius: 0.5rem;
+
+                            .item-name {
                                 color: $Rose900;
+                                font-weight: 600;
+                            }
+
+                            .item-details {
+                                display: flex;
+                                gap: 0.5rem;
+
+                                .quantity {
+                                    color: $Red;
+                                }
+
+                                .price {
+                                    color: $Rose400;
+                                }
+
+                                .total-price {
+                                    font-weight: 700;
+                                    color: $Rose900;
+                                }
                             }
                         }
                     }
-                }
-                
-                .carbon-notice {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    background-color: $Rose100;
-                    padding: 0.75rem;
-                    border-radius: 0.5rem;
-                    margin: 1.5rem 0;
-                    
-                    img {
-                        width: 20px;
-                        height: 20px;
-                    }
-                    
-                    p {
-                        color: $Rose900;
-                        font-size: 0.9rem;
-                        margin: 0;
-                    }
-                }
-            }
-            
-            .overlay-actions {
-                display: flex;
-                gap: 1rem;
-                justify-content: flex-end;
-                margin-top: 1.5rem;
-                
-                button {
-                    padding: 0.75rem 1.5rem;
-                    border-radius: 2rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    
-                    &.cancel {
+
+                    .carbon-notice {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
                         background-color: $Rose100;
-                        color: $Rose900;
-                        border: none;
-                        
-                        &:hover {
-                            background-color: $Rose300;
+                        padding: 0.75rem;
+                        border-radius: 0.5rem;
+                        margin: 1.5rem 0;
+
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        p {
+                            color: $Rose900;
+                            font-size: 0.9rem;
+                            margin: 0;
                         }
                     }
-                    
-                    &.confirm {
-                        background-color: $Red;
-                        color: white;
-                        border: none;
-                        
-                        &:hover {
-                            background-color: darken($Red, 10%);
+                }
+
+                .overlay-actions {
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: flex-end;
+                    margin-top: 1.5rem;
+
+                    button {
+                       
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 2rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+
+                        &.cancel {
+                            background-color: $Rose100;
+                            color: $Rose900;
+                            border: none;
+
+                            &:hover {
+                                background-color: $Rose300;
+                            }
+                        }
+
+                        &.confirm {
+                            background-color: $Red;
+                            color: white;
+                            border: none;
+                            
+
+                            &:hover {
+                                background-color: darken($Red, 10%);
+                            }
                         }
                     }
                 }
             }
         }
     }
+    @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    min-height: auto !important;
+
+    .main-content {
+        display: flex;
+      flex-direction: column;
+      padding: 3rem;
+      min-height: 700vh;
+
+
+      .cart-container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        position: relative;
+        top: 1990px !important;
+        margin-left: -350px;
+      }
+
+      .cards-container {
+        order: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        height: auto;
+        gap: 1rem;
+
+        .cards-row-1,
+        .cards-row-2,
+        .cards-row-3 {
+          width: 100%;
+          flex-direction: column;
+          margin-left: 40px;
+        }
+
+        .card-1,
+        .card-2,
+        .card-3,
+        .card-4,
+        .card-5,
+        .card-6,
+        .card-7,
+        .card-8,
+        .card-9 {
+          
+
+          .card-image {
+            width: 100%;
+            height: 200px;
+          }
+
+          .add-to-cart-button,
+          .interactive-button {
+            top: -5%;
+            left: 10%;
+          }
+        }
+      }
     }
+
+    .cart-items {
+      .item {
+        .remove {
+          left: 90%;
+        }
+      }
+    }
+
+    .confirm-button {
+    }
+  }
+}
 </style>
