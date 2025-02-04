@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Epilogue', sans-serif;
+    background-color: hsl(0, 0%, 98%);
+}
+
+.main-container {
+    background-color: hsl(0, 0%, 98%);
+    height: 100vh;
+}
+.hamburger-icon{
+    display: none;
+}
+.close-icon{
+    display: none;
+}
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.logo{
+    margin-top: 15px;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: hsl(0, 0%, 41%);
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 24px;
+    cursor: pointer;
+}
+.nav-links a:hover {
+    color: hsl(0, 0%, 8%);
+}
+
+.auth-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 1rem 2rem;
+}
+
+.auth-btns button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    color: hsl(0, 0%, 41%);
+    font-family: 'Epilogue', sans-serif;
+}
+
+.login button {
+    background-color: hsl(0, 0%, 98%);
+}
+
+.login button:hover {
+    color: hsl(0, 0%, 8%);
+}
+
+.register button {
+    background-color: hsl(0, 0%, 98%);
+    border: 2px solid hsl(0, 0%, 41%);
+    border-radius: 12px;
+}
+
+.register button:hover {
+    color: hsl(0, 0%, 8%);
+    border-color: hsl(0, 0%, 8%);
+}
+
+.hide {
+    display: none !important;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.dropdown-content a {
+    color: hsl(0, 0%, 41%);
+    padding: 8px 0;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: hsl(0, 0%, 8%);
+}
+
+.down-up-icons {
+    display: inline-flex;
+    align-items: center;
+    margin-left: -20px;
+    cursor: pointer;
+}
+
+.intro-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1;
+    margin-left: 80px;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 45%;
+}
+
+.left-container img {
+    width: 100%;
+    height: 500px;
+    max-width: 400px;
+    margin-left: -80px;
+    margin-top: -10px;
+}
+
+.right-container h1 {
+    font-size: 52px;
+    font-weight: 700;
+    color: hsl(0, 0%, 8%);
+    width: 350px;
+    text-align: left;
+}
+
+.right-container p {
+    font-size: 18px;
+    font-weight: 400;
+    color: hsl(0, 0%, 41%);
+    width: 420px;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.partners {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top:80px;
+}
+
+.learnmore button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    color: hsl(0, 0%, 98%);
+    background-color: hsl(0, 0%, 8%);
+    font-family: 'Epilogue', sans-serif;
+}
+
+.learnmore button:hover {
+    background-color: hsl(0, 0%, 98%);
+    color: hsl(0, 0%, 8%);
+    border: 1px solid hsl(0, 0%, 8%);
+}
+
+@media (max-width: 768px) {
+    .nav-links, .auth-btns {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: white;
+        padding: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        box-shadow: -2px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 5rem;
+    }
+
+    .auth-btns {
+        flex-direction: column;
+        top: auto;
+        bottom: 2rem;
+        right: -100%;
+        width: 70%;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .nav-links.active,
+    .auth-btns.active {
+        right: 0;
+    }
+
+    .hamburger-icon,
+    .close-icon {
+        display: block;
+        position: absolute;
+        right: 1.5rem;
+        top: 2rem;
+        z-index: 1001;
+        cursor: pointer;
+    }
+
+    .close-icon {
+        right: 1.3rem;
+        top: 1.8rem;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        padding-left: 1rem;
+        background: transparent;
+    }
+
+    .left-container img {
+        margin: 0;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .right-container {
+        margin-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .right-container h1,
+    .right-container p {
+        width: 100%;
+        text-align: center;
+    }
+
+    .intro-section {
+        flex-direction: column-reverse;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .right-container h1 {
+        font-size: 2rem;
+    }
+
+    .partners {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
